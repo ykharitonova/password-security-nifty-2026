@@ -26,7 +26,7 @@ In this assignment, you will explore the principles of password security and imp
 
 Through this process, you will enhance your understanding of cybersecurity concepts while practicing fundamental Python programming skills such as string manipulation, control flow, functions, and file handling.
 
-You’ll be working with the `funcs.py` file and can run the `main.py` file to create a Tkinter interface where you can test your implementation
+You’ll be working with the `funcs.py` file and can run the `main.py` file to create a Tkinter interface where you can interactively test your implementation.
 
 
 ## Part 1: Generating a Secure Password
@@ -37,10 +37,10 @@ Randomly generated passwords that include a mix of character types are significa
 
 #### **Character Inclusion**: 
 The password must contain at least one character from each selected character pool:
-	- Lowercase letters
-	- Uppercase letters
-	- Digits
-	- Special characters
+- Lowercase letters
+- Uppercase letters
+- Digits
+- Special characters
 
 #### **Randomization**:
 The remaining characters (after including one from each selected pool) should be randomly selected from the combined pool of all selected character types.
@@ -50,11 +50,11 @@ The final password should be shuffled to ensure randomness and prevent predictab
 
 - Function Name: `generate_password`
 - Parameters:
-	`length (int)`: The desired length of the password.
-	`use_lowercase (bool)`: Include lowercase letters (default True).
-	`use_uppercase (bool)`: Include uppercase letters (default True).
-	`use_digits (bool)`: Include digits (default True).
-	`use_special_chars (bool)`: Include special characters (default True).
+	- `length (int)`: The desired length of the password.
+	- `use_lowercase (bool)`: Include lowercase letters (default True).
+	- `use_uppercase (bool)`: Include uppercase letters (default True).
+	- `use_digits (bool)`: Include digits (default True).
+	- `use_special_chars (bool)`: Include special characters (default True).
 	
 #### **Error Handling**: 
 If none of the character types are selected (all `use_*` parameters are False), the function should return an error message:  `"Error: At least one character type must be selected!"`. If the specified `length` is less than the number of selected character pools, the function should return an error message: `"Error: Length is too short to include all selected character types!"`
