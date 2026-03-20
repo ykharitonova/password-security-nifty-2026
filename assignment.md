@@ -69,3 +69,79 @@ print(generate_password(3, use_lowercase=True, use_uppercase=True))
 ```
 
 ---
+
+
+## Part 2: Enforcing Strong Password Requirements
+
+Validating password strength helps prevent the use of weak passwords.
+
+### Requirements
+
+#### **Function Specifications:**
+
+* Function Name: `enforce_strong_password_requirements`
+* Parameter:
+		* `password (str)`: The password string to be evaluated.
+* Password Strength Criteria:
+	- Minimum Length: At least 8 characters.
+	- Character Types:
+		- At least one lowercase letter.
+		- At least one uppercase letter.
+		- At least one digit.
+		- At least one special character.
+
+#### **Error Handling**: 
+If the password meets all requirements, the function should return a success message: 
+`"Your password is strong and meets all requirements!"`.
+If the password does not meet all requirements, the function should return a message indicating which requirements are missing.
+
+#### **Example Usage**
+```
+print(enforce_strong_password_requirements("P@ssw0rd"))
+# Output: "Your password is strong and meets all requirements!"
+
+print(enforce_strong_password_requirements("password"))
+# Output:
+# Your password is missing:
+# - At least one uppercase letter
+# - At least one digit
+# - At least one special character
+```
+
+---
+
+
+## Part 3: Calculating Password Possibilities
+
+Calculating the total number of possible combinations helps assess how difficult a password is to crack via brute force.
+
+### Requirements
+
+#### Function Specifications:
+* Function Name: `calculate_possibilities`
+* Parameter:
+		* `password (str)`: The password string to be analyzed.
+* Calculations:
+		- Determine Character Sets Used: Identify which character sets are present in the password (lowercase, uppercase, digits, special characters).
+		- Calculate Total Possibilities: Use the formula: `total_possibilities = (character_set_size) ** (password_length)`
+			- `character_set_size`: The total number of unique characters from the sets used.
+			- `password_length`: The length of the password.
+
+#### Example Usage
+```
+possibilities = calculate_possibilities("P@ssw0rd")
+print(f"Total possible combinations: {possibilities}")
+
+# Example Output: Total possible combinations: 1517108809906561
+```
+
+---
+
+## Part 4: Estimating Time to Crack a Password
+
+Estimating cracking time helps evaluate the practical security of a password.
+
+### Requirements
+
+#### Function Specifications:
+Function Name: `estimate_password_cracking_time`
