@@ -118,14 +118,15 @@ Calculating the total number of possible combinations helps assess how difficult
 ### Requirements
 
 #### Function Specifications:
+
 * Function Name: `calculate_possibilities`
 * Parameter:
-		* `password (str)`: The password string to be analyzed.
+	* `password (str)`: The password string to be analyzed.
 * Calculations:
-		- Determine Character Sets Used: Identify which character sets are present in the password (lowercase, uppercase, digits, special characters).
-		- Calculate Total Possibilities: Use the formula: `total_possibilities = (character_set_size) ** (password_length)`
-			- `character_set_size`: The total number of unique characters from the sets used.
-			- `password_length`: The length of the password.
+	- Determine Character Sets Used: Identify which character sets are present in the password (lowercase, uppercase, digits, special characters).
+	- Calculate Total Possibilities: Use the formula: `total_possibilities = (character_set_size) ** (password_length)`
+		- `character_set_size`: The total number of unique characters from the sets used.
+		- `password_length`: The length of the password.
 
 #### Example Usage
 ```
@@ -144,4 +145,5 @@ Estimating cracking time helps evaluate the practical security of a password.
 ### Requirements
 
 #### Function Specifications:
-Function Name: `estimate_password_cracking_time`
+
+* Function Name: `estimate_password_cracking_time`
