@@ -59,7 +59,7 @@ The final password should be shuffled to ensure randomness and prevent predictab
 #### **Error Handling**: 
 If none of the character types are selected (all `use_*` parameters are False), the function should return an error message:  `"Error: At least one character type must be selected!"`. If the specified `length` is less than the number of selected character pools, the function should return an error message: `"Error: Length is too short to include all selected character types!"`
 
-#### Example Usage
+#### **Example Usage**
 ```
 print(generate_password(12, use_lowercase=True, use_uppercase=True, use_digits=True, use_special_chars=True))
 # Example Output: 'aB3$dE5&hI2@'
@@ -75,13 +75,13 @@ print(generate_password(3, use_lowercase=True, use_uppercase=True))
 
 Validating password strength helps prevent the use of weak passwords.
 
-### Requirements
+### **Requirements**
 
 #### **Function Specifications:**
 
 * Function Name: `enforce_strong_password_requirements`
 * Parameter:
-		* `password (str)`: The password string to be evaluated.
+	* `password (str)`: The password string to be evaluated.
 * Password Strength Criteria:
 	- Minimum Length: At least 8 characters.
 	- Character Types:
@@ -115,9 +115,9 @@ print(enforce_strong_password_requirements("password"))
 
 Calculating the total number of possible combinations helps assess how difficult a password is to crack via brute force.
 
-### Requirements
+### **Requirements**
 
-#### Function Specifications:
+#### **Function Specifications:**
 
 * Function Name: `calculate_possibilities`
 * Parameter:
@@ -128,7 +128,7 @@ Calculating the total number of possible combinations helps assess how difficult
 		- `character_set_size`: The total number of unique characters from the sets used.
 		- `password_length`: The length of the password.
 
-#### Example Usage
+#### **Example Usage**
 ```
 possibilities = calculate_possibilities("P@ssw0rd")
 print(f"Total possible combinations: {possibilities}")
@@ -142,8 +142,87 @@ print(f"Total possible combinations: {possibilities}")
 
 Estimating cracking time helps evaluate the practical security of a password.
 
-### Requirements
+### **Requirements**
 
-#### Function Specifications:
+#### **Function Specifications:**
 
 * Function Name: `estimate_password_cracking_time`
+* Parameter:
+	- `password (str)`: The password string to be evaluated.
+* Assumptions:
+	- Attack Speed: Assume an attacker can attempt 1,000,000 passwords per second.
+* Calculations:
+	- Time in Seconds: `time_in_seconds = total_possibilities / guesses_per_second`
+	- Time in Years: `time_in_years = time_in_seconds / (60 * 60 * 24 * 365.25)`
+* Use Previous Function:
+     -  Utilize the `calculate_possibilities` function to get `total_possibilities`.
+
+#### Example Usage
+
+```
+seconds, years = estimate_password_cracking_time("P@ssw0rd")
+print(f"Estimated time to crack: {seconds} seconds (~{years} years)")
+
+# Example Output: Estimated time to crack: 1517108809.906561 seconds (~48.07427719175605 years)
+```
+
+
+---
+
+## Part 5: Simulating a Dictionary Attack
+
+A dictionary attack is a method used by attackers to crack passwords by systematically testing all words in a predefined list, typically a list of common passwords or words from a dictionary. This attack exploits the tendency of users to choose simple and common passwords.
+
+### Requirements
+#### Function Specifications:
+
+
+* Function Name: `dictionary_attack`
+* Parameters:
+	- `target_password (str)`: The password string that the attacker is trying to guess.
+	- `dictionary_file (str)`: The path to the file containing a list of common passwords (default is "Rockyou.txt").
+
+#### **Functionality:**
+* Read Passwords from File:
+	- The function should read a list of passwords from the specified `dictionary_file`.
+	- Use a try-except block to handle the case where the file does not exist.
+* Simulate Attack:
+	- Start a timer to measure how long the attack takes.
+	- Initialize an `attempts` counter to keep track of the number of passwords tried.
+	- Loop through each password in the file:
+		- Increment the `attempts` counter.
+		- Compare the current password (after stripping whitespace) with the `target_password`.
+		- If a match is found:
+			- Calculate the elapsed time.
+			- Return the elapsed time and the number of attempts.
+   
+#### **Return Value:**
+* If the `target_password` is found in the list, return the time taken and the number of attempts.
+* If the `target_password` is not found after checking all passwords, return `None` and the total number of attempts.
+
+#### **Error Handling:**
+If the `dictionary_file` does not exist, the function should handle the `FileNotFoundError` and return an appropriate message or value.
+
+#### **Example Usage**
+```
+elapsed_time, attempts = dictionary_attack("password123")
+if elapsed_time:
+    print(f"Password found in {elapsed_time:.2f} seconds after {attempts} attempts.")
+else:
+    print(f"Password not found after {attempts} attempts.")
+```
+
+#### **Sample Outputs:**
+If the password is found: 
+```
+Password found in 0.05 seconds after 123 attempts.
+```
+
+If the password is not found: 
+```
+Password not found after 1000 attempts.
+```
+
+
+
+
