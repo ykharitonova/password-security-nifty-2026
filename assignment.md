@@ -33,6 +33,20 @@ You’ll be working with the `funcs.py` file and can run the `main.py` file to c
 
 Randomly generated passwords that include a mix of character types are significantly more resistant to brute force attacks and other password-cracking techniques.
 
+**Learning Objectives:**
+- **Cybersecurity Concept:** 
+  - Demonstrate the importance of randomness and diversity in secure password generation.  
+  - Implement proper random generation and validation to make passwords harder to crack.
+
+
+- **Programming Skills:**  
+  - Use Python’s `random` and `string` modules for randomization and character handling.  
+  - Implement **control flow** to handle user input and conditions (e.g., missing character sets, length checks).  
+  - Apply **string manipulation** and **list operations** to combine and shuffle characters.  
+  - Write **robust error handling** for input validation.  
+
+
+
 ### Requirements
 
 #### **Character Inclusion**: 
@@ -75,6 +89,18 @@ print(generate_password(3, use_lowercase=True, use_uppercase=True))
 
 Validating password strength helps prevent the use of weak passwords.
 
+**Learning Objectives:**
+- **Cybersecurity Concept:** 
+  -  Show what constitutes a strong password and why enforcing complexity reduces vulnerability to attacks.  
+  -  Implement real-world password policies like those used in authentication systems.
+
+
+- **Programming Skills:**  
+  - Use **conditional logic** to validate multiple password strength rules.  
+  - Apply **string methods** and possibly **regular expressions** to detect character types.  
+  - Generate **user-friendly feedback** describing missing security components.  
+
+
 ### **Requirements**
 
 #### **Function Specifications:**
@@ -115,6 +141,17 @@ print(enforce_strong_password_requirements("password"))
 
 Calculating the total number of possible combinations helps assess how difficult a password is to crack via brute force.
 
+**Learning Objectives:**
+- **Cybersecurity Concept:** 
+  -  Quantify password strength mathematically by computing the number of possible combinations. 
+  -  Demonstrate how password complexity directly affects the theoretical difficulty of brute-force attacks.
+
+- **Programming Skills:**  
+  - Use **mathematical formulas and exponents** to compute possibilities.  
+  - Identify which **character sets** a given password uses.  
+  - Strengthen **logical decomposition skills** (breaking down the problem into character set detection and calculation).  
+
+
 ### **Requirements**
 
 #### **Function Specifications:**
@@ -141,6 +178,17 @@ print(f"Total possible combinations: {possibilities}")
 ## Part 4: Estimating Time to Crack a Password
 
 Estimating cracking time helps evaluate the practical security of a password.
+
+**Learning Objectives:**
+- **Cybersecurity Concept:** 
+  -  Relate theoretical password strength to practical cracking difficulty (introducing brute-force attack modeling).  
+  -  Show how exponential growth in possible combinations affects cracking times, reinforcing the value of password complexity.
+
+- **Programming Skills:**  
+  - Integrate results from **other functions** (`calculate_possibilities`), encouraging **modular programming**.  
+  - Perform **unit conversions** and arithmetic calculations for time estimation.  
+  - Use **formatting** for a clear output presentation.  
+
 
 ### **Requirements**
 
@@ -173,9 +221,19 @@ print(f"Estimated time to crack: {seconds} seconds (~{years} years)")
 
 A dictionary attack is a method used by attackers to crack passwords by systematically testing all words in a predefined list, typically a list of common passwords or words from a dictionary. This attack exploits the tendency of users to choose simple and common passwords.
 
+**Learning Objectives:**
+- **Cybersecurity Concept:** 
+  -  Simulate dictionary attacks to see how attackers exploit weak passwords.  
+  -  Provide hands-on insight into how attackers approach password cracking and why using uncommon passwords is essential.
+- **Programming Skills:**  
+  - Perform **file handling** (reading password lists safely).  
+  - Use **loops** and **conditions** to simulate attack attempts.  
+  - Apply **timing functions** (`time` module) to measure performance.  
+  - Implement **exception handling** for missing files or other runtime issues.  
+  - Track **iterations and progress metrics**.  
+
 ### Requirements
 #### Function Specifications:
-
 
 * Function Name: `dictionary_attack`
 * Parameters:
